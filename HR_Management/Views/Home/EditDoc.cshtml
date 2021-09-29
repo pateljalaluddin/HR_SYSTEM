@@ -1,0 +1,34 @@
+﻿@model HR_Management.TblEmpDetail
+
+@{
+    ViewBag.Title = "EditDoc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Update Employee Document</h2>
+
+
+@using (Html.BeginForm("EditDoc", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Documents</h4>
+    <hr />
+    <div>
+        @Html.TextBox("file", "", new { type = "file" }) <br />
+        <input type="submit" value="Upload" />
+        @ViewBag.Message
+    </div>
+
+   
+</div>
+}
+
+        <div>
+            @Html.ActionLink("Back to List", "Documents", new { id = Session["EID"] })
+        </div>
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
